@@ -67,6 +67,10 @@ class LeagueDetailsActivity : AppCompatActivity() {
             (supportActionBar as ActionBar).setDisplayHomeAsUpEnabled(true)
             (supportActionBar as ActionBar).setDisplayShowHomeEnabled(true)
         }
+    }
 
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 }
