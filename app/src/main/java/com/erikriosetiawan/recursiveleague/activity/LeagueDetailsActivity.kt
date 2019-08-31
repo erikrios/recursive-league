@@ -36,14 +36,14 @@ class LeagueDetailsActivity : AppCompatActivity() {
                     padding = dip(16)
                     orientation = LinearLayout.VERTICAL
 
-                    val imageLeague = imageView {
+                    imageView {
                         imageResource = league.image!!
                     }.lparams(width = dip(250), height = dip(250)) {
                         margin = dip(15)
                         gravity = Gravity.CENTER_HORIZONTAL
                     }
 
-                    val nameLeague = textView {
+                    textView {
                         text = league.name
                         textSize = 16f
                         typeface = Typeface.DEFAULT_BOLD
@@ -51,7 +51,7 @@ class LeagueDetailsActivity : AppCompatActivity() {
                         margin = dip(10)
                     }
 
-                    val descriptionLeague = textView {
+                    textView {
                         text = league.description
                     }.lparams(width = matchParent, height = wrapContent) {
                         margin = dip(10)

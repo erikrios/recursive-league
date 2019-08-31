@@ -4,10 +4,9 @@ import android.os.Bundle
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.erikriosetiawan.recursiveleague.model.League
-import com.erikriosetiawan.recursiveleague.adapter.LeagueAdapter
 import com.erikriosetiawan.recursiveleague.R
-import kotlinx.android.synthetic.main.activity_main.*
+import com.erikriosetiawan.recursiveleague.adapter.LeagueAdapter
+import com.erikriosetiawan.recursiveleague.model.League
 import org.jetbrains.anko.matchParent
 import org.jetbrains.anko.recyclerview.v7.recyclerView
 import org.jetbrains.anko.startActivity
@@ -20,11 +19,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
         initData()
-
-        league_list.layoutManager = LinearLayoutManager(this)
 
         verticalLayout {
             recyclerView {
