@@ -1,4 +1,4 @@
-package com.erikriosetiawan.recursiveleague
+package com.erikriosetiawan.recursiveleague.adapter
 
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.erikriosetiawan.recursiveleague.R.id.league_image
 import com.erikriosetiawan.recursiveleague.R.id.league_name
+import com.erikriosetiawan.recursiveleague.model.League
 import com.squareup.picasso.Picasso
 import org.jetbrains.anko.*
 
@@ -17,7 +18,11 @@ class LeagueAdapter(
 ) : RecyclerView.Adapter<LeagueAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ViewHolder {
-        return ViewHolder(LeagueUI().createView(AnkoContext.create(p0.context, p0)))
+        return ViewHolder(
+            LeagueUI().createView(
+                AnkoContext.create(p0.context, p0)
+            )
+        )
     }
 
     override fun getItemCount(): Int = leagues.size

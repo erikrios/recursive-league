@@ -1,4 +1,4 @@
-package com.erikriosetiawan.recursiveleague
+package com.erikriosetiawan.recursiveleague.activity
 
 import android.graphics.Typeface
 import android.os.Bundle
@@ -6,6 +6,7 @@ import android.view.Gravity
 import android.widget.LinearLayout
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
+import com.erikriosetiawan.recursiveleague.model.League
 import org.jetbrains.anko.*
 
 class LeagueDetailsActivity : AppCompatActivity() {

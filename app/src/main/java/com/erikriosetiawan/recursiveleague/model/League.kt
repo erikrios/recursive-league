@@ -1,4 +1,4 @@
-package com.erikriosetiawan.recursiveleague
+package com.erikriosetiawan.recursiveleague.model
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

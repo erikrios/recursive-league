@@ -1,9 +1,12 @@
-package com.erikriosetiawan.recursiveleague
+package com.erikriosetiawan.recursiveleague.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.erikriosetiawan.recursiveleague.model.League
+import com.erikriosetiawan.recursiveleague.adapter.LeagueAdapter
+import com.erikriosetiawan.recursiveleague.R
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.matchParent
 import org.jetbrains.anko.recyclerview.v7.recyclerView
@@ -28,7 +31,9 @@ class MainActivity : AppCompatActivity() {
                 lparams(width = matchParent, height = wrapContent)
                 layoutManager = LinearLayoutManager(context)
                 adapter = LeagueAdapter(leagues) {
-                    startActivity<LeagueDetailsActivity>(LeagueDetailsActivity.LEAGUE_KEY to it)
+                    startActivity<LeagueDetailsActivity>(
+                        LeagueDetailsActivity.LEAGUE_KEY to it
+                    )
                 }
             }
         }
@@ -42,7 +47,13 @@ class MainActivity : AppCompatActivity() {
         val image = resources.obtainTypedArray(R.array.league_image)
         leagues.clear()
         for (i in name.indices) {
-            leagues.add(League(name[i], description[i], image.getResourceId(i, 0)))
+            leagues.add(
+                League(
+                    name[i],
+                    description[i],
+                    image.getResourceId(i, 0)
+                )
+            )
         }
         image.recycle()
     }
