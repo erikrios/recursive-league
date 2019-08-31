@@ -62,7 +62,11 @@ class LeagueDetailsActivity : AppCompatActivity() {
     }
 
     private fun setActionBar(title: String?) {
-        if (supportActionBar != null) (supportActionBar as ActionBar).title = title
+        if (supportActionBar != null) {
+            (supportActionBar as ActionBar).title = title
+            (supportActionBar as ActionBar).setDisplayHomeAsUpEnabled(true)
+            (supportActionBar as ActionBar).setDisplayShowHomeEnabled(true)
+        }
 
     }
 }
