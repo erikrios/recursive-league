@@ -22,7 +22,7 @@ class LeagueDetailsFragment : Fragment() {
         leagueDetailsViewModel =
             ViewModelProviders.of(this).get(LeagueDetailsViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_league_details, container, false)
-        val textView: TextView = root.findViewById(R.id.text_home)
+        val textView: TextView = root.findViewById(R.id.tv_league_description_title)
         leagueDetailsViewModel.text.observe(this, Observer {
             textView.text = it
         })
