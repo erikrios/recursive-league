@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">Recursive League</string>
     <string name="league_list">League List</string>
+    <string name="title_activity_league_details">League Details</string>
+    <string name="title_league_details">League Details</string>
+    <string name="title_last_match">Last Match</string>
+    <string name="title_next_match">Next Match</string>
 
     <string-array name="league_name">
         <item>English Premier League</item>

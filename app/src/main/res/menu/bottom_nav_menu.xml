@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_league_details"
+        android:icon="@drawable/ic_league_details_black_24dp"
+        android:title="@string/title_league_details" />
+
+    <item
+        android:id="@+id/navigation_last_match"
+        android:icon="@drawable/ic_last_match_black_24dp"
+        android:title="@string/title_last_match" />
+
+    <item
+        android:id="@+id/navigation_next_match"
+        android:icon="@drawable/ic_next_match_black_24dp"
+        android:title="@string/title_next_match" />
+
+</menu>
