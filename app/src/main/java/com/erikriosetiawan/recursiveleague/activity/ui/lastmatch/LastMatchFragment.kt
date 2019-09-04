@@ -38,15 +38,15 @@ class LastMatchFragment : Fragment() {
 
     private fun initData(lastMatches: MutableList<LastMatch>) {
         val lastMatchOne = LastMatch(
-            602159,
-            3,
-            2,
+            "602159",
+            "3",
+            "2",
             "https://www.thesportsdb.com/images/media/event/fanart/s885rf1567344469.jpg"
         )
         val lastMatchTwo = LastMatch(
-            602166,
-            2,
-            2,
+            "602166",
+            "2",
+            "2",
             "https://www.thesportsdb.com/images/media/event/thumb/7n50lt1567262930.jpg"
         )
 

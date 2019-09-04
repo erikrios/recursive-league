@@ -37,8 +37,8 @@ class NextMatchFragment : Fragment() {
     }
 
     private fun initData(nextMatches: MutableList<NextMatch>) {
-        val nextMatchOne = NextMatch(602170, null, null, "Wolves vs Chelsea")
-        val nextMatchTwo = NextMatch(602171, null, null, "Liverpool vs Newcastle")
+        val nextMatchOne = NextMatch("602170", null, null, "Wolves vs Chelsea")
+        val nextMatchTwo = NextMatch("602171", null, null, "Liverpool vs Newcastle")
 
         nextMatches.add(nextMatchOne)
         nextMatches.add(nextMatchTwo)

@@ -38,8 +38,19 @@ class LeagueAdapter(
 
         fun bindItem(leagues: League, listener: (League) -> Unit) {
             leagueName.text = leagues.name
-            leagues.image?.let { Picasso.get().load(it).into(leagueImage) }
+            loadImageBackground(leagues, this)
             itemView.setOnClickListener { listener(leagues) }
+        }
+
+        private fun loadImageBackground(league: League, holder: ViewHolder) {
+            doAsync {
+                val loadImage = Picasso.get().load(league.image!!)
+
+                uiThread {
+                    loadImage.into(holder.leagueImage)
+                }
+            }
+
         }
     }
 

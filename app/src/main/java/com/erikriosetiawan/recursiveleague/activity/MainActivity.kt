@@ -38,6 +38,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initData() {
+        val idLeague = resources.getStringArray(R.array.id_league)
         val name = resources.getStringArray(R.array.league_name)
         val description = resources.getStringArray(R.array.league_description)
         val image = resources.obtainTypedArray(R.array.league_image)
@@ -45,6 +46,7 @@ class MainActivity : AppCompatActivity() {
         for (i in name.indices) {
             leagues.add(
                 League(
+                    idLeague[i],
                     name[i],
                     description[i],
                     image.getResourceId(i, 0)

@@ -1,15 +1,35 @@
 package com.erikriosetiawan.recursiveleague.model
 
-data class LeagueDetails(
-    val leagueName: String?,
-    val country: String?,
-    val firstEvent: String?,
-    val leagueBadge: String?,
-    val leagueDescription: String?,
-    val website: String?,
-    val facebook: String?,
-    val twitter: String?,
-    val youtube: String?,
-    val rss: String?
+import com.google.gson.annotations.SerializedName
 
+data class LeagueDetails(
+    @SerializedName("strLeague")
+    val leagueName: String? = null,
+
+    @SerializedName("strCountry")
+    val country: String? = null,
+
+    @SerializedName("dateFirstEvent")
+    val firstEvent: String? = null,
+
+    @SerializedName("strBadge")
+    val leagueBadge: String? = null,
+
+    @SerializedName("strDescriptionEN")
+    val leagueDescription: String? = null,
+
+    @SerializedName("strWebsite")
+    val website: String? = null,
+
+    @SerializedName("strFacebook")
+    val facebook: String? = null,
+
+    @SerializedName("strTwitter")
+    val twitter: String? = null,
+
+    @SerializedName("strYoutube")
+    val youtube: String? = null,
+
+    @SerializedName("strRSS")
+    val rss: String? = null
 )

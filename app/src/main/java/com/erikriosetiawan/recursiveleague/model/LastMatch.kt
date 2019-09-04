@@ -1,3 +1,8 @@
 package com.erikriosetiawan.recursiveleague.model
 
-data class LastMatch(val idEvent: Int?, val homeScore: Int?, val awayScore: Int, val thumb: String?)
+data class LastMatch(
+    val idEvent: String?,
+    val homeScore: String?,
+    val awayScore: String?,
+    val thumb: String?
+)

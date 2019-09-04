@@ -37,7 +37,9 @@
                         android:layout_width="150dp"
                         android:layout_height="150dp"
                         android:layout_centerVertical="true"
-                        android:src="@drawable/english_premier_league" />
+                        android:src="@color/colorPrimaryDark"
+                        tools:ignore="ContentDescription"
+                        tools:src="@drawable/english_premier_league" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -56,8 +58,10 @@
                                 android:text="@string/league_name" />
 
                             <TextView
+                                android:id="@+id/tv_league_name"
                                 style="@style/TextContent"
-                                android:text="English Premier League" />
+                                android:text="@string/load_data"
+                                tools:text="English Premier League" />
 
                         </LinearLayout>
 
@@ -70,8 +74,10 @@
                                 android:text="@string/country" />
 
                             <TextView
+                                android:id="@+id/tv_league_country"
                                 style="@style/TextContent"
-                                android:text="England" />
+                                android:text="@string/load_data"
+                                tools:text="England" />
 
                         </LinearLayout>
 
@@ -82,12 +88,22 @@
                                 android:text="@string/first_event" />
 
                             <TextView
+                                android:id="@+id/tv_league_first_event"
                                 style="@style/TextContent"
-                                android:text="2000-08-18" />
+                                android:text="@string/load_data"
+                                tools:text="2000-08-18" />
 
                         </LinearLayout>
 
                     </LinearLayout>
+
+                    <ProgressBar
+                        android:id="@+id/progress_bar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:visibility="invisible" />
 
                 </RelativeLayout>
 
@@ -101,24 +117,34 @@
                     android:weightSum="5">
 
                     <ImageView
+                        android:id="@+id/img_league_website"
                         style="@style/ImageSocial"
-                        android:src="@drawable/domain" />
+                        android:src="@drawable/domain"
+                        tools:ignore="ContentDescription" />
 
                     <ImageView
+                        android:id="@+id/img_league_facebook"
                         style="@style/ImageSocial"
-                        android:src="@drawable/facebook" />
+                        android:src="@drawable/facebook"
+                        tools:ignore="ContentDescription" />
 
                     <ImageView
+                        android:id="@+id/img_league_twitter"
                         style="@style/ImageSocial"
-                        android:src="@drawable/twitter" />
+                        android:src="@drawable/twitter"
+                        tools:ignore="ContentDescription" />
 
                     <ImageView
+                        android:id="@+id/img_league_youtube"
                         style="@style/ImageSocial"
-                        android:src="@drawable/youtube" />
+                        android:src="@drawable/youtube"
+                        tools:ignore="ContentDescription" />
 
                     <ImageView
+                        android:id="@+id/img_league_rss"
                         style="@style/ImageSocial"
-                        android:src="@drawable/rss" />
+                        android:src="@drawable/rss"
+                        tools:ignore="ContentDescription" />
 
                 </LinearLayout>
 
@@ -147,10 +173,12 @@
             tools:ignore="NestedWeights">
 
             <TextView
+                android:id="@+id/tv_league_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/activity_vertical_margin"
-                android:text="@string/league_description_hint"/>
+                android:text="@string/load_data"
+                tools:text="@string/league_description_hint" />
 
         </ScrollView>
 

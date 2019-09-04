@@ -1,3 +1,8 @@
 package com.erikriosetiawan.recursiveleague.model
 
-data class NextMatch(val idEvent: Int?, val homeScore: Int?, val awayScore: Int?, val event: String?)
+data class NextMatch(
+    val idEvent: String?,
+    val homeScore: String?,
+    val awayScore: String?,
+    val event: String?
+)
