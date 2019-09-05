@@ -1,13 +1,14 @@
 package com.erikriosetiawan.recursiveleague.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.erikriosetiawan.recursiveleague.R
+import com.erikriosetiawan.recursiveleague.activity.LeagueDetailsActivity
 import com.erikriosetiawan.recursiveleague.model.NextMatch
 
 class NextMatchAdapter(
@@ -22,7 +23,8 @@ class NextMatchAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bindItem(nextMatches[position]) {
-            Toast.makeText(context, nextMatches[position].event, Toast.LENGTH_SHORT).show()
+            val dataIntent = Intent(context, LeagueDetailsActivity::class.java)
+            context.startActivity(dataIntent)
         }
     }
 
