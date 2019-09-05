@@ -1,4 +1,4 @@
-package com.erikriosetiawan.recursiveleague.activity.ui
+package com.erikriosetiawan.recursiveleague.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

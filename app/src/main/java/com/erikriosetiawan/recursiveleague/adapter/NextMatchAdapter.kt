@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.erikriosetiawan.recursiveleague.R
-import com.erikriosetiawan.recursiveleague.activity.LeagueDetailsActivity
+import com.erikriosetiawan.recursiveleague.activity.MatchDetailsActivity
 import com.erikriosetiawan.recursiveleague.model.NextMatch
 
 class NextMatchAdapter(
@@ -23,7 +23,7 @@ class NextMatchAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bindItem(nextMatches[position]) {
-            val dataIntent = Intent(context, LeagueDetailsActivity::class.java)
+            val dataIntent = Intent(context, MatchDetailsActivity::class.java)
             context.startActivity(dataIntent)
         }
     }
