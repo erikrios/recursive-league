@@ -41,8 +41,13 @@ class LastMatchAdapter(
         fun bindItem(lastMatch: LastMatch, listener: (LastMatch) -> Unit) {
             lastMatch.thumb?.let { Picasso.get().load(it).into(imgThumb) }
             tvEvent.text = lastMatch.event
-            tvHomeScore.text = lastMatch.homeScore
-            tvAwayScore.text = lastMatch.awayScore
+            if ((lastMatch.homeScore == null) && lastMatch.awayScore == null) {
+                tvHomeScore.text = "-"
+                tvAwayScore.text = "-"
+            } else {
+                tvHomeScore.text = lastMatch.homeScore
+                tvAwayScore.text = lastMatch.awayScore
+            }
             itemView.setOnClickListener { listener(lastMatch) }
         }
     }
