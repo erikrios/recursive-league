@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -28,6 +29,8 @@ class LastMatchFragment : Fragment(), LastMatchMainView {
 
     private lateinit var root: View
 
+    private lateinit var progressBar: ProgressBar
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -37,6 +40,7 @@ class LastMatchFragment : Fragment(), LastMatchMainView {
             ViewModelProviders.of(this).get(LastMatchViewModel::class.java)
         root = inflater.inflate(R.layout.fragment_last_match, container, false)
 
+        initView(root)
         getIntentIdLeague()
 
         val gson = Gson()
@@ -57,12 +61,16 @@ class LastMatchFragment : Fragment(), LastMatchMainView {
         idLeague = league.idLeague!!
     }
 
-    override fun showLoading() {
+    private fun initView(root: View) {
+        progressBar = root.findViewById(R.id.progress_bar)
+    }
 
+    override fun showLoading() {
+        progressBar.visibility = View.VISIBLE
     }
 
     override fun hideLoading() {
-
+        progressBar.visibility = View.GONE
     }
 
     override fun showLastMatchList(data: List<LastMatch>?) {
