@@ -3,7 +3,8 @@ package com.erikriosetiawan.recursiveleague.api
 import android.net.Uri
 import com.erikriosetiawan.recursiveleague.BuildConfig
 
-object TheSportDBApiLeagueDetails {
+object TheSportDBApi {
+
     fun getLeagueDetails(idLeague: String?): String {
         return Uri.parse(BuildConfig.BASE_URL).buildUpon()
             .appendPath("api")

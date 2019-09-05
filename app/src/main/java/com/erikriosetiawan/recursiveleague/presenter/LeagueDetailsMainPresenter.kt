@@ -1,7 +1,7 @@
 package com.erikriosetiawan.recursiveleague.presenter
 
 import com.erikriosetiawan.recursiveleague.api.ApiRepository
-import com.erikriosetiawan.recursiveleague.api.TheSportDBApiLeagueDetails
+import com.erikriosetiawan.recursiveleague.api.TheSportDBApi
 import com.erikriosetiawan.recursiveleague.model.LeagueDetailsResponse
 import com.erikriosetiawan.recursiveleague.view.LeagueDetailsMainView
 import com.google.gson.Gson
@@ -20,7 +20,7 @@ class LeagueDetailsMainPresenter(
         doAsync {
             val data = gson.fromJson(
                 apiRepository
-                    .doRequest(TheSportDBApiLeagueDetails.getLeagueDetails(idLeague)),
+                    .doRequest(TheSportDBApi.getLeagueDetails(idLeague)),
                 LeagueDetailsResponse::class.java
             )
 
