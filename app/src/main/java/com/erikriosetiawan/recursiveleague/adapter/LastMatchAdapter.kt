@@ -34,13 +34,15 @@ class LastMatchAdapter(
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         private val imgThumb: ImageView = view.findViewById(R.id.img_thumb)
+        private val tvEvent: TextView = view.findViewById(R.id.tv_event)
         private val tvHomeScore: TextView = view.findViewById(R.id.tv_home_score)
         private val tvAwayScore: TextView = view.findViewById(R.id.tv_away_score)
 
         fun bindItem(lastMatch: LastMatch, listener: (LastMatch) -> Unit) {
             lastMatch.thumb?.let { Picasso.get().load(it).into(imgThumb) }
-            tvHomeScore.text = lastMatch.homeScore.toString()
-            tvAwayScore.text = lastMatch.awayScore.toString()
+            tvEvent.text = lastMatch.event
+            tvHomeScore.text = lastMatch.homeScore
+            tvAwayScore.text = lastMatch.awayScore
             itemView.setOnClickListener { listener(lastMatch) }
         }
     }

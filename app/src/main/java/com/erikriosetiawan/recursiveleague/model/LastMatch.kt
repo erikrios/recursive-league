@@ -13,5 +13,8 @@ data class LastMatch(
     val awayScore: String?,
 
     @SerializedName("strThumb")
-    val thumb: String?
+    val thumb: String?,
+
+    @SerializedName("strEvent")
+    val event: String?
 )
