@@ -1,165 +1,181 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:weightSum="4"
     tools:context=".activity.MatchDetailsActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="horizontal"
-        android:weightSum="2">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="4">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@android:color/holo_blue_bright"
+                tools:ignore="NestedWeights">
+
+                <TextView
+                    android:id="@+id/tv_match_details_sport"
+                    style="@style/TextMatchDetailsContent"
+                    tools:text="Soccer" />
+
+                <TextView
+                    style="@style/TextMatchDetails"
+                    android:text="@string/sport" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@android:color/holo_orange_light"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/TextMatchDetails"
+                    android:text="@string/league" />
+
+                <TextView
+                    android:id="@+id/tv_match_details_league"
+                    style="@style/TextMatchDetailsContent"
+                    tools:text="English Premiere League" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@android:color/holo_purple"
+                android:orientation="vertical"
+                tools:ignore="NestedWeights">
+
+                <TextView
+                    style="@style/TextMatchDetails"
+                    android:text="@string/home_team" />
+
+                <TextView
+                    android:id="@+id/tv_match_details_home_team"
+                    style="@style/TextMatchDetailsContent"
+                    tools:text="Manchester United" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@android:color/holo_red_light"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/TextMatchDetails"
+                    android:text="@string/away_team" />
+
+                <TextView
+                    android:id="@+id/tv_match_details_away_team"
+                    style="@style/TextMatchDetailsContent"
+                    tools:text="Arsenal" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@android:color/holo_green_light"
+                android:orientation="vertical"
+                tools:ignore="NestedWeights">
+
+                <TextView
+                    style="@style/TextMatchDetails"
+                    android:text="@string/home_score" />
+
+                <TextView
+                    android:id="@+id/tv_match_details_home_score"
+                    style="@style/TextMatchDetailsContent"
+                    tools:text="2" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@android:color/holo_blue_dark"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/TextMatchDetails"
+                    android:text="@string/away_score" />
+
+                <TextView
+                    android:id="@+id/tv_match_details_away_score"
+                    style="@style/TextMatchDetailsContent"
+                    tools:text="2" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
 
         <RelativeLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
             android:layout_weight="1"
-            android:background="@android:color/holo_blue_bright"
-            tools:ignore="NestedWeights">
-
-            <TextView
-                android:id="@+id/tv_match_details_sport"
-                style="@style/TextMatchDetailsContent"
-                android:text="Soccer" />
+            android:background="@android:color/darker_gray"
+            android:orientation="horizontal">
 
             <TextView
                 style="@style/TextMatchDetails"
-                android:text="@string/sport" />
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@android:color/holo_orange_light"
-            android:orientation="vertical">
+                android:text="@string/date_event" />
 
             <TextView
-                style="@style/TextMatchDetails"
-                android:text="@string/league" />
-
-            <TextView
-                android:id="@+id/tv_match_details_league"
+                android:id="@+id/date_event"
                 style="@style/TextMatchDetailsContent"
-                android:text="English Premiere League" />
+                tools:text="2019-09-01" />
 
         </RelativeLayout>
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="horizontal"
-        android:weightSum="2">
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="invisible" />
 
-        <RelativeLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@android:color/holo_purple"
-            android:orientation="vertical"
-            tools:ignore="NestedWeights">
-
-            <TextView
-                style="@style/TextMatchDetails"
-                android:text="@string/home_team" />
-
-            <TextView
-                android:id="@+id/tv_match_details_home_team"
-                style="@style/TextMatchDetailsContent"
-                android:text="Manchester United" />
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@android:color/holo_red_light"
-            android:orientation="vertical">
-
-            <TextView
-                style="@style/TextMatchDetails"
-                android:text="@string/away_team" />
-
-            <TextView
-                android:id="@+id/tv_match_details_away_team"
-                style="@style/TextMatchDetailsContent"
-                android:text="Arsenal" />
-
-        </RelativeLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="horizontal"
-        android:weightSum="2">
-
-        <RelativeLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@android:color/holo_green_light"
-            android:orientation="vertical"
-            tools:ignore="NestedWeights">
-
-            <TextView
-                style="@style/TextMatchDetails"
-                android:text="@string/home_score" />
-
-            <TextView
-                android:id="@+id/tv_match_details_home_score"
-                style="@style/TextMatchDetailsContent"
-                android:text="2" />
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@android:color/holo_blue_dark"
-            android:orientation="vertical">
-
-            <TextView
-                style="@style/TextMatchDetails"
-                android:text="@string/away_score" />
-
-            <TextView
-                android:id="@+id/tv_match_details_away_score"
-                style="@style/TextMatchDetailsContent"
-                android:text="2" />
-
-        </RelativeLayout>
-
-    </LinearLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:background="@android:color/darker_gray"
-        android:orientation="horizontal">
-
-        <TextView
-            style="@style/TextMatchDetails"
-            android:text="@string/date_event" />
-
-        <TextView
-            android:id="@+id/date_event"
-            style="@style/TextMatchDetailsContent"
-            android:text="2019-09-01" />
-
-    </RelativeLayout>
-
-</LinearLayout>
+</RelativeLayout>

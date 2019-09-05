@@ -26,6 +26,7 @@ class LastMatchAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bindItem(lastMatches[position]) {
             val dataIntent = Intent(context, MatchDetailsActivity::class.java)
+            dataIntent.putExtra(MatchDetailsActivity.EVENT_ID_KEY, lastMatches[position].idEvent)
             context.startActivity(dataIntent)
         }
     }
