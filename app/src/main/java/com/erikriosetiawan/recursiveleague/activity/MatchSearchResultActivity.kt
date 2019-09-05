@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ProgressBar
 import android.widget.Toast
+import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -70,5 +71,19 @@ class MatchSearchResultActivity : AppCompatActivity(), MatchSearchResultMainView
             matchSearchResults.addAll(data)
             setRecyclerList()
         }
+        setActionBar()
+    }
+
+    private fun setActionBar() {
+        if (supportActionBar != null) {
+            (supportActionBar as ActionBar).title = "Search Result"
+            (supportActionBar as ActionBar).setDisplayHomeAsUpEnabled(true)
+            (supportActionBar as ActionBar).setDisplayShowHomeEnabled(true)
+        }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 }

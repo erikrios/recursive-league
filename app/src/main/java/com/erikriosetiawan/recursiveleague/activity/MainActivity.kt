@@ -1,5 +1,6 @@
 package com.erikriosetiawan.recursiveleague.activity
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
@@ -67,6 +68,7 @@ class MainActivity : AppCompatActivity() {
         val searchView: SearchView = searchMatch?.actionView as SearchView
         searchView.queryHint = resources.getString(R.string.search_hint)
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            @SuppressLint("DefaultLocale")
             override fun onQueryTextSubmit(query: String?): Boolean {
                 val matchQuery = query?.format("%s", query)?.replace(" ", "_")
                 val queryIntent = Intent(this@MainActivity, MatchSearchResultActivity::class.java)

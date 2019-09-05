@@ -91,6 +91,15 @@ class MatchDetailsActivity : AppCompatActivity(), MatchDetailsMainView {
     }
 
     private fun setActionBarTitle(title: String?) {
-        if (supportActionBar != null) (supportActionBar as ActionBar).title = title
+        if (supportActionBar != null) {
+            (supportActionBar as ActionBar).title = title
+            (supportActionBar as ActionBar).setDisplayHomeAsUpEnabled(true)
+            (supportActionBar as ActionBar).setDisplayShowHomeEnabled(true)
+        }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 }
