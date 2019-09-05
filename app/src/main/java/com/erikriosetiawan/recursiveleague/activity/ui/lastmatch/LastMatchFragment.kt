@@ -9,13 +9,24 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.erikriosetiawan.recursiveleague.R
+import com.erikriosetiawan.recursiveleague.activity.LeagueDetailsActivity
 import com.erikriosetiawan.recursiveleague.adapter.LastMatchAdapter
+import com.erikriosetiawan.recursiveleague.api.ApiRepository
 import com.erikriosetiawan.recursiveleague.model.LastMatch
+import com.erikriosetiawan.recursiveleague.model.League
+import com.erikriosetiawan.recursiveleague.presenter.LastMatchMainPresenter
+import com.erikriosetiawan.recursiveleague.view.LastMatchMainView
+import com.google.gson.Gson
 
-class LastMatchFragment : Fragment() {
+class LastMatchFragment : Fragment(), LastMatchMainView {
 
     private lateinit var lastMatchViewModel: LastMatchViewModel
+
     private var lastMatches: MutableList<LastMatch> = mutableListOf()
+    private lateinit var idLeague: String
+    private lateinit var presenter: LastMatchMainPresenter
+
+    private lateinit var root: View
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -24,33 +35,40 @@ class LastMatchFragment : Fragment() {
     ): View? {
         lastMatchViewModel =
             ViewModelProviders.of(this).get(LastMatchViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_last_match, container, false)
-        setRecyclerList(root)
+        root = inflater.inflate(R.layout.fragment_last_match, container, false)
+
+        getIntentIdLeague()
+
+        val gson = Gson()
+        val request = ApiRepository()
+        presenter = LastMatchMainPresenter(this, request, gson)
+        presenter.getLastMatchList(idLeague)
         return root
     }
 
     private fun setRecyclerList(root: View) {
-        initData(lastMatches)
         val rvLastMatch = root.findViewById<RecyclerView>(R.id.rv_last_match)
         rvLastMatch.layoutManager = LinearLayoutManager(root.context)
         rvLastMatch.adapter = LastMatchAdapter(root.context, lastMatches)
     }
 
-    private fun initData(lastMatches: MutableList<LastMatch>) {
-        val lastMatchOne = LastMatch(
-            "602159",
-            "3",
-            "2",
-            "https://www.thesportsdb.com/images/media/event/fanart/s885rf1567344469.jpg"
-        )
-        val lastMatchTwo = LastMatch(
-            "602166",
-            "2",
-            "2",
-            "https://www.thesportsdb.com/images/media/event/thumb/7n50lt1567262930.jpg"
-        )
+    private fun getIntentIdLeague() {
+        val league: League = activity!!.intent.getParcelableExtra(LeagueDetailsActivity.LEAGUE_KEY)
+        idLeague = league.idLeague!!
+    }
 
-        lastMatches.add(lastMatchOne)
-        lastMatches.add(lastMatchTwo)
+    override fun showLoading() {
+
+    }
+
+    override fun hideLoading() {
+
+    }
+
+    override fun showLastMatchList(data: List<LastMatch>?) {
+        lastMatches.clear()
+        lastMatches.addAll(data!!)
+        setRecyclerList(root)
+
     }
 }
