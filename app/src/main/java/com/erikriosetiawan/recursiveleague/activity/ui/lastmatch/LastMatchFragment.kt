@@ -77,6 +77,5 @@ class LastMatchFragment : Fragment(), LastMatchMainView {
         lastMatches.clear()
         lastMatches.addAll(data!!)
         setRecyclerList(root)
-
     }
 }
