@@ -24,6 +24,7 @@ import com.squareup.picasso.Picasso
 
 class LeagueDetailsFragment : Fragment(), LeagueDetailsMainView, View.OnClickListener {
 
+    private lateinit var root: View
     private lateinit var leagueDetailsViewModel: LeagueDetailsViewModel
     private lateinit var idLeague: String
     private lateinit var presenter: LeagueDetailsMainPresenter
@@ -56,7 +57,12 @@ class LeagueDetailsFragment : Fragment(), LeagueDetailsMainView, View.OnClickLis
     ): View? {
         leagueDetailsViewModel =
             ViewModelProviders.of(this).get(LeagueDetailsViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_league_details, container, false)
+        root = inflater.inflate(R.layout.fragment_league_details, container, false)
+        return root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         val textView: TextView = root.findViewById(R.id.tv_league_description_title)
         leagueDetailsViewModel.text.observe(this, Observer {
             textView.text = it
@@ -69,7 +75,6 @@ class LeagueDetailsFragment : Fragment(), LeagueDetailsMainView, View.OnClickLis
         val request = ApiRepository()
         presenter = LeagueDetailsMainPresenter(this, request, gson)
         presenter.getLegueDetailsList(idLeague)
-        return root
     }
 
     private fun getIntentIdLeague() {

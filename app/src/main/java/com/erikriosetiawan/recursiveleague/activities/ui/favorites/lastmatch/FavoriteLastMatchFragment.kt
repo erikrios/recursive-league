@@ -31,12 +31,12 @@ class FavoriteLastMatchFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         root = inflater.inflate(R.layout.fragment_favorite_last_match, container, false)
-        initView(root)
         return root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initView(root)
         showFavorite()
         setRecyclerList(root)
     }

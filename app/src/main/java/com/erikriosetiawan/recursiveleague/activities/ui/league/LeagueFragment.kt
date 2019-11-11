@@ -17,10 +17,6 @@ import org.jetbrains.anko.recyclerview.v7.recyclerView
 
 class LeagueFragment : Fragment(), AnkoComponent<Context> {
 
-    companion object {
-        fun newInstance() = LeagueFragment()
-    }
-
     private lateinit var viewModel: LeagueViewModel
     private var leagues: MutableList<League> = mutableListOf()
 

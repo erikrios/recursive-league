@@ -39,7 +39,11 @@ class LastMatchFragment : Fragment(), LastMatchMainView {
         lastMatchViewModel =
             ViewModelProviders.of(this).get(LastMatchViewModel::class.java)
         root = inflater.inflate(R.layout.fragment_last_match, container, false)
+        return root
+    }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         initView(root)
         getIntentIdLeague()
 
@@ -47,7 +51,6 @@ class LastMatchFragment : Fragment(), LastMatchMainView {
         val request = ApiRepository()
         presenter = LastMatchMainPresenter(this, request, gson)
         presenter.getLastMatchList(idLeague)
-        return root
     }
 
     private fun setRecyclerList(root: View) {
