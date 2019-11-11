@@ -24,7 +24,7 @@ class NextMatchFragment : Fragment(), NextMatchMainView {
     private lateinit var nextMatchViewModel: NextMatchViewModel
 
     private var nextMatches: MutableList<NextMatch> = mutableListOf()
-    private lateinit var idLeague: String
+    private var idLeague: String? = null
     private lateinit var presenter: NextMatchMainPresenter
 
     private lateinit var root: View
@@ -60,8 +60,8 @@ class NextMatchFragment : Fragment(), NextMatchMainView {
     }
 
     private fun getIntentIdLeague() {
-        val league: League = activity!!.intent.getParcelableExtra(LeagueDetailsActivity.LEAGUE_KEY)
-        idLeague = league.idLeague!!
+        val league: League? = activity?.intent?.getParcelableExtra(LeagueDetailsActivity.LEAGUE_KEY)
+        idLeague = league?.idLeague
     }
 
     private fun initView(root: View) {
@@ -78,7 +78,7 @@ class NextMatchFragment : Fragment(), NextMatchMainView {
 
     override fun showNextMatchList(data: List<NextMatch>?) {
         nextMatches.clear()
-        nextMatches.addAll(data!!)
+        data?.let { nextMatches.addAll(it) }
         setRecyclerList(root)
     }
 }

@@ -44,10 +44,10 @@ class LeagueAdapter(
 
         private fun loadImageBackground(league: League, holder: ViewHolder) {
             doAsync {
-                val loadImage = Picasso.get().load(league.image!!)
+                val loadImage = league.image?.let { Picasso.get().load(it) }
 
                 uiThread {
-                    loadImage.into(holder.leagueImage)
+                    loadImage?.into(holder.leagueImage)
                 }
             }
 

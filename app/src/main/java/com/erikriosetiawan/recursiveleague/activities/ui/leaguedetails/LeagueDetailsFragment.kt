@@ -26,7 +26,7 @@ class LeagueDetailsFragment : Fragment(), LeagueDetailsMainView, View.OnClickLis
 
     private lateinit var root: View
     private lateinit var leagueDetailsViewModel: LeagueDetailsViewModel
-    private lateinit var idLeague: String
+    private var idLeague: String? = null
     private lateinit var presenter: LeagueDetailsMainPresenter
     private var leagueDetails: MutableList<LeagueDetails?>? = mutableListOf()
 
@@ -78,8 +78,9 @@ class LeagueDetailsFragment : Fragment(), LeagueDetailsMainView, View.OnClickLis
     }
 
     private fun getIntentIdLeague() {
-        val league: League = activity!!.intent.getParcelableExtra(LeagueDetailsActivity.LEAGUE_KEY)
-        idLeague = league.idLeague!!
+        val league: League? =
+            activity?.intent?.getParcelableExtra(LeagueDetailsActivity.LEAGUE_KEY)
+        idLeague = league?.idLeague
     }
 
     override fun showLoading() {
@@ -92,7 +93,7 @@ class LeagueDetailsFragment : Fragment(), LeagueDetailsMainView, View.OnClickLis
 
     override fun showLeagueDetailsList(data: List<LeagueDetails>?) {
         leagueDetails?.clear()
-        leagueDetails?.addAll(data!!)
+        data?.let { leagueDetails?.addAll(it) }
         Picasso.get()
             .load(leagueDetails?.get(0)?.leagueBadge)
             .into(imgLeagueBadge)

@@ -38,9 +38,9 @@ class FavoritesFragment : Fragment() {
         activity?.let {
             viewPager = it.findViewById(R.id.pager)
         }
-        val pagerAdapter = MyPagerAdapter(activity!!.supportFragmentManager)
-        pagerAdapter.addFragment(FavoriteLastMatchFragment(), "Favorite Last Match")
-        pagerAdapter.addFragment(FavoriteNextMatchFragment(), "Favorite Next Match")
+        val pagerAdapter = activity?.supportFragmentManager?.let { MyPagerAdapter(it) }
+        pagerAdapter?.addFragment(FavoriteLastMatchFragment(), "Favorite Last Match")
+        pagerAdapter?.addFragment(FavoriteNextMatchFragment(), "Favorite Next Match")
         viewPager.adapter = pagerAdapter
 
         activity?.let {

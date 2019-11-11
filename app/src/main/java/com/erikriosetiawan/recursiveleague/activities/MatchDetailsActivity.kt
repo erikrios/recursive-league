@@ -28,7 +28,7 @@ import org.jetbrains.anko.db.select
 
 class MatchDetailsActivity : AppCompatActivity(), MatchDetailsMainView {
 
-    private var idEvent: String? = null
+    private lateinit var idEvent: String
     private lateinit var presenter: MatchDetailsMainPresenter
     private var matchDetails: MutableList<MatchDetails> = mutableListOf()
 
@@ -166,7 +166,7 @@ class MatchDetailsActivity : AppCompatActivity(), MatchDetailsMainView {
                 delete(
                     LastMatch.TABLE_FAVORITE_LAST_MATCH,
                     "(ID_EVENT = {idEvent})",
-                    "idEvent" to idEvent!!
+                    "idEvent" to idEvent
                 )
             }
             Snackbar.make(
@@ -206,7 +206,7 @@ class MatchDetailsActivity : AppCompatActivity(), MatchDetailsMainView {
                 delete(
                     NextMatch.TABLE_FAVORITE_NEXT_MATCH,
                     "(ID_EVENT = {idEvent})",
-                    "idEvent" to idEvent!!
+                    "idEvent" to idEvent
                 )
             }
             Snackbar.make(
@@ -233,7 +233,7 @@ class MatchDetailsActivity : AppCompatActivity(), MatchDetailsMainView {
             val result = select(LastMatch.TABLE_FAVORITE_LAST_MATCH)
                 .whereArgs(
                     "(ID_EVENT = {idEvent})",
-                    "idEvent" to idEvent!!
+                    "idEvent" to idEvent
                 )
             val favorites = result.parseList(classParser<LastMatch>())
             for (i in favorites.indices)
@@ -247,7 +247,7 @@ class MatchDetailsActivity : AppCompatActivity(), MatchDetailsMainView {
             val result = select(NextMatch.TABLE_FAVORITE_NEXT_MATCH)
                 .whereArgs(
                     "(ID_EVENT = {idEvent})",
-                    "idEvent" to idEvent!!
+                    "idEvent" to idEvent
                 )
             val favorites = result.parseList(classParser<NextMatch>())
             for (i in favorites.indices)
