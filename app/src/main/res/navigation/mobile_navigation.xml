@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/navigation_league_details"
-        android:name="com.erikriosetiawan.recursiveleague.activity.ui.leaguedetails.LeagueDetailsFragment"
+        android:name="com.erikriosetiawan.recursiveleague.activities.ui.leaguedetails.LeagueDetailsFragment"
         android:label="@string/title_league_details"
         tools:layout="@layout/fragment_league_details" />
 
     <fragment
         android:id="@+id/navigation_last_match"
-        android:name="com.erikriosetiawan.recursiveleague.activity.ui.lastmatch.LastMatchFragment"
+        android:name="com.erikriosetiawan.recursiveleague.activities.ui.lastmatch.LastMatchFragment"
         android:label="@string/title_last_match"
         tools:layout="@layout/fragment_last_match" />
 
     <fragment
         android:id="@+id/navigation_next_match"
-        android:name="com.erikriosetiawan.recursiveleague.activity.ui.nextmatch.NextMatchFragment"
+        android:name="com.erikriosetiawan.recursiveleague.activities.ui.nextmatch.NextMatchFragment"
         android:label="@string/title_next_match"
         tools:layout="@layout/fragment_next_match" />
 </navigation>

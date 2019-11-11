@@ -22,6 +22,7 @@
     <string name="search_hint">Barcelona VS Real Madrid</string>
     <string name="match_search">Match Search</string>
     <string name="match_not_found">Match Not Found! Please Try to Search Another Match</string>
+    <string name="favorites">Favorites</string>
 
     <string-array name="league_name">
         <item>English Premier League</item>
@@ -74,4 +75,7 @@
         <item>@drawable/scotish_premier_league</item>
         <item>@drawable/english_league_1</item>
     </array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
