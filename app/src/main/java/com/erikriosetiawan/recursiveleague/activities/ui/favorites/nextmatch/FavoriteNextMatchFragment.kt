@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.erikriosetiawan.recursiveleague.R
 import com.erikriosetiawan.recursiveleague.adapters.NextMatchAdapter
-import com.erikriosetiawan.recursiveleague.databases.favoriteNextMatchDatabase
+import com.erikriosetiawan.recursiveleague.databases.favoriteMatchDatabase
 import com.erikriosetiawan.recursiveleague.models.NextMatch
 import org.jetbrains.anko.db.classParser
 import org.jetbrains.anko.db.select
@@ -41,6 +41,11 @@ class FavoriteNextMatchFragment : Fragment() {
         setRecyclerList(root)
     }
 
+    override fun onResume() {
+        super.onResume()
+        showFavorite()
+    }
+
     private fun initView(root: View) {
         rvFavoriteNextMatch = root.findViewById(R.id.rv_favorite_next_match)
         nextMatchAdapter = NextMatchAdapter(root.context, favoriteNextMatches)
@@ -53,7 +58,7 @@ class FavoriteNextMatchFragment : Fragment() {
 
     private fun showFavorite() {
         favoriteNextMatches.clear()
-        context?.favoriteNextMatchDatabase?.use {
+        context?.favoriteMatchDatabase?.use {
             val result = select(NextMatch.TABLE_FAVORITE_NEXT_MATCH)
             val favorites = result.parseList(classParser<NextMatch>())
             favoriteNextMatches.addAll(favorites)

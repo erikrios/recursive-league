@@ -13,8 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.erikriosetiawan.recursiveleague.R
 import com.erikriosetiawan.recursiveleague.apis.ApiRepository
-import com.erikriosetiawan.recursiveleague.databases.favoriteLastMatchDatabase
-import com.erikriosetiawan.recursiveleague.databases.favoriteNextMatchDatabase
+import com.erikriosetiawan.recursiveleague.databases.favoriteMatchDatabase
 import com.erikriosetiawan.recursiveleague.models.LastMatch
 import com.erikriosetiawan.recursiveleague.models.MatchDetails
 import com.erikriosetiawan.recursiveleague.models.NextMatch
@@ -141,7 +140,7 @@ class MatchDetailsActivity : AppCompatActivity(), MatchDetailsMainView {
 
     private fun addToFavoriteLastMatch() {
         try {
-            favoriteLastMatchDatabase.use {
+            favoriteMatchDatabase.use {
                 insert(
                     LastMatch.TABLE_FAVORITE_LAST_MATCH,
                     LastMatch.ID_EVENT to matchDetails[0].eventId,
@@ -163,7 +162,7 @@ class MatchDetailsActivity : AppCompatActivity(), MatchDetailsMainView {
 
     private fun removeFromFavoriteLastMatch() {
         try {
-            favoriteLastMatchDatabase.use {
+            favoriteMatchDatabase.use {
                 delete(
                     LastMatch.TABLE_FAVORITE_LAST_MATCH,
                     "(ID_EVENT = {idEvent})",
@@ -182,7 +181,7 @@ class MatchDetailsActivity : AppCompatActivity(), MatchDetailsMainView {
 
     private fun addToFavoriteNextMatch() {
         try {
-            favoriteNextMatchDatabase.use {
+            favoriteMatchDatabase.use {
                 insert(
                     NextMatch.TABLE_FAVORITE_NEXT_MATCH,
                     NextMatch.ID_EVENT to matchDetails[0].eventId,
@@ -203,7 +202,7 @@ class MatchDetailsActivity : AppCompatActivity(), MatchDetailsMainView {
 
     private fun removeFromFavoriteNextMatch() {
         try {
-            favoriteNextMatchDatabase.use {
+            favoriteMatchDatabase.use {
                 delete(
                     NextMatch.TABLE_FAVORITE_NEXT_MATCH,
                     "(ID_EVENT = {idEvent})",
@@ -230,7 +229,7 @@ class MatchDetailsActivity : AppCompatActivity(), MatchDetailsMainView {
     }
 
     private fun favoriteStateLastMatch() {
-        favoriteLastMatchDatabase.use {
+        favoriteMatchDatabase.use {
             val result = select(LastMatch.TABLE_FAVORITE_LAST_MATCH)
                 .whereArgs(
                     "(ID_EVENT = {idEvent})",
@@ -244,7 +243,7 @@ class MatchDetailsActivity : AppCompatActivity(), MatchDetailsMainView {
     }
 
     private fun favoriteStateNextMatch() {
-        favoriteNextMatchDatabase.use {
+        favoriteMatchDatabase.use {
             val result = select(NextMatch.TABLE_FAVORITE_NEXT_MATCH)
                 .whereArgs(
                     "(ID_EVENT = {idEvent})",
