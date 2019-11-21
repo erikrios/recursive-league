@@ -16,4 +16,14 @@
         android:icon="@drawable/ic_next_match_black_24dp"
         android:title="@string/title_next_match" />
 
+    <item
+        android:id="@+id/navigation_standings"
+        android:icon="@drawable/ic_line_weight_black_24dp"
+        android:title="@string/standings" />
+
+    <item
+        android:id="@+id/navigation_team"
+        android:icon="@drawable/ic_insert_invitation_black_24dp"
+        android:title="@string/team" />
+
 </menu>

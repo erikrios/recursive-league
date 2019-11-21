@@ -30,6 +30,7 @@ class NextMatchAdapter(
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+
         private val tvEvent: TextView = view.findViewById(R.id.tv_event)
 
         fun bindItem(nextMatch: NextMatch, listener: (NextMatch) -> Unit) {

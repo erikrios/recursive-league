@@ -7,9 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.erikriosetiawan.recursiveleague.R
-import com.erikriosetiawan.recursiveleague.fragments.LastMatchFragment
-import com.erikriosetiawan.recursiveleague.fragments.LeagueDetailsFragment
-import com.erikriosetiawan.recursiveleague.fragments.NextMatchFragment
+import com.erikriosetiawan.recursiveleague.fragments.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class LeagueDetailsActivity : AppCompatActivity() {
@@ -62,8 +60,24 @@ class LeagueDetailsActivity : AppCompatActivity() {
                     fragmentTransaction.commit()
                     return@OnNavigationItemSelectedListener true
                 }
-                else -> {
+                R.id.navigation_next_match -> {
                     fragment = NextMatchFragment()
+                    fragmentManager = supportFragmentManager
+                    fragmentTransaction = fragmentManager.beginTransaction()
+                    fragmentTransaction.replace(R.id.frame_league_details, fragment)
+                    fragmentTransaction.commit()
+                    return@OnNavigationItemSelectedListener true
+                }
+                R.id.navigation_standings -> {
+                    fragment = StandingsFragment()
+                    fragmentManager = supportFragmentManager
+                    fragmentTransaction = fragmentManager.beginTransaction()
+                    fragmentTransaction.replace(R.id.frame_league_details, fragment)
+                    fragmentTransaction.commit()
+                    return@OnNavigationItemSelectedListener true
+                }
+                else -> {
+                    fragment = TeamsFragment()
                     fragmentManager = supportFragmentManager
                     fragmentTransaction = fragmentManager.beginTransaction()
                     fragmentTransaction.replace(R.id.frame_league_details, fragment)
