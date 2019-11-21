@@ -5,28 +5,28 @@ import com.erikriosetiawan.recursiveleague.apis.TheSportDBApi
 import com.erikriosetiawan.recursiveleague.models.LastMatchResponse
 import com.erikriosetiawan.recursiveleague.views.LastMatchMainView
 import com.google.gson.Gson
-import org.jetbrains.anko.doAsync
-import org.jetbrains.anko.uiThread
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class LastMatchMainPresenter(
 
     private val view: LastMatchMainView,
     private val apiRepository: ApiRepository,
-    private val gson: Gson
+    private val gson: Gson,
+    private val context: CoroutineContextProvider = CoroutineContextProvider()
 ) {
 
     fun getLastMatchList(idLeague: String?) {
         view.showLoading()
-        doAsync {
+
+        GlobalScope.launch(context.main) {
             val data = gson.fromJson(
-                apiRepository.doRequest(TheSportDBApi.getLastMatch(idLeague)),
+                apiRepository.doRequestAsync(TheSportDBApi.getLastMatch(idLeague)).await(),
                 LastMatchResponse::class.java
             )
 
-            uiThread {
-                view.hideLoading()
-                view.showLastMatchList(data.events)
-            }
+            view.hideLoading()
+            view.showLastMatchList(data.events)
         }
     }
 }

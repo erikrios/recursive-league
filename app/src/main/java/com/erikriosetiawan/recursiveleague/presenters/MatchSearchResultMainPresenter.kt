@@ -5,28 +5,29 @@ import com.erikriosetiawan.recursiveleague.apis.TheSportDBApi
 import com.erikriosetiawan.recursiveleague.models.MatchSearchResultResponse
 import com.erikriosetiawan.recursiveleague.views.MatchSearchResultMainView
 import com.google.gson.Gson
-import org.jetbrains.anko.doAsync
-import org.jetbrains.anko.uiThread
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class MatchSearchResultMainPresenter(
 
     private val view: MatchSearchResultMainView,
     private val apiRepository: ApiRepository,
-    private val gson: Gson
+    private val gson: Gson,
+    private val context: CoroutineContextProvider = CoroutineContextProvider()
 ) {
 
     fun getMatchSearchResult(query: String?) {
         view.showLoading()
-        doAsync {
+
+        GlobalScope.launch(context.main) {
             val data = gson.fromJson(
-                apiRepository.doRequest(TheSportDBApi.getMatchSearchResult(query)),
+                apiRepository
+                    .doRequestAsync(TheSportDBApi.getMatchSearchResult(query)).await(),
                 MatchSearchResultResponse::class.java
             )
 
-            uiThread {
-                view.hideLoading()
-                view.showMatchSearchResultList(data.event)
-            }
+            view.hideLoading()
+            view.showMatchSearchResultList(data.event)
         }
     }
 }
