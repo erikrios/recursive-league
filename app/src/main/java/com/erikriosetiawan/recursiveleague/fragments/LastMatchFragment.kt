@@ -1,4 +1,4 @@
-package com.erikriosetiawan.recursiveleague.activities.ui.lastmatch
+package com.erikriosetiawan.recursiveleague.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.erikriosetiawan.recursiveleague.R
@@ -21,7 +20,6 @@ import com.google.gson.Gson
 
 class LastMatchFragment : Fragment(), LastMatchMainView {
 
-    private lateinit var lastMatchViewModel: LastMatchViewModel
 
     private var lastMatches: MutableList<LastMatch> = mutableListOf()
     private var idLeague: String? = null
@@ -36,8 +34,6 @@ class LastMatchFragment : Fragment(), LastMatchMainView {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        lastMatchViewModel =
-            ViewModelProviders.of(this).get(LastMatchViewModel::class.java)
         root = inflater.inflate(R.layout.fragment_last_match, container, false)
         return root
     }

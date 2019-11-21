@@ -1,4 +1,4 @@
-package com.erikriosetiawan.recursiveleague.activities.ui.favorites.nextmatch
+package com.erikriosetiawan.recursiveleague.fragments
 
 
 import android.os.Bundle
@@ -9,28 +9,28 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.erikriosetiawan.recursiveleague.R
-import com.erikriosetiawan.recursiveleague.adapters.NextMatchAdapter
+import com.erikriosetiawan.recursiveleague.adapters.LastMatchAdapter
 import com.erikriosetiawan.recursiveleague.databases.favoriteMatchDatabase
-import com.erikriosetiawan.recursiveleague.models.NextMatch
+import com.erikriosetiawan.recursiveleague.models.LastMatch
 import org.jetbrains.anko.db.classParser
 import org.jetbrains.anko.db.select
 
 /**
  * A simple [Fragment] subclass.
  */
-class FavoriteNextMatchFragment : Fragment() {
+class FavoriteLastMatchFragment : Fragment() {
 
-    private lateinit var rvFavoriteNextMatch: RecyclerView
+    private lateinit var rvFavoriteLastMatch: RecyclerView
     private lateinit var root: View
-    private var favoriteNextMatches: MutableList<NextMatch> = mutableListOf()
-    private lateinit var nextMatchAdapter: NextMatchAdapter
+    private var favoriteLastMatches: MutableList<LastMatch> = mutableListOf()
+    private lateinit var lastMatchAdapter: LastMatchAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        root = inflater.inflate(R.layout.fragment_favorite_next_match, container, false)
+        root = inflater.inflate(R.layout.fragment_favorite_last_match, container, false)
         return root
     }
 
@@ -47,22 +47,22 @@ class FavoriteNextMatchFragment : Fragment() {
     }
 
     private fun initView(root: View) {
-        rvFavoriteNextMatch = root.findViewById(R.id.rv_favorite_next_match)
-        nextMatchAdapter = NextMatchAdapter(root.context, favoriteNextMatches)
+        rvFavoriteLastMatch = root.findViewById(R.id.rv_favorite_last_match)
+        lastMatchAdapter = LastMatchAdapter(root.context, favoriteLastMatches)
     }
 
     private fun setRecyclerList(root: View) {
-        rvFavoriteNextMatch.layoutManager = LinearLayoutManager(root.context)
-        rvFavoriteNextMatch.adapter = nextMatchAdapter
+        rvFavoriteLastMatch.layoutManager = LinearLayoutManager(root.context)
+        rvFavoriteLastMatch.adapter = lastMatchAdapter
     }
 
     private fun showFavorite() {
-        favoriteNextMatches.clear()
+        favoriteLastMatches.clear()
         context?.favoriteMatchDatabase?.use {
-            val result = select(NextMatch.TABLE_FAVORITE_NEXT_MATCH)
-            val favorites = result.parseList(classParser<NextMatch>())
-            favoriteNextMatches.addAll(favorites)
-            nextMatchAdapter.notifyDataSetChanged()
+            val result = select(LastMatch.TABLE_FAVORITE_LAST_MATCH)
+            val favorites = result.parseList(classParser<LastMatch>())
+            favoriteLastMatches.addAll(favorites)
+            lastMatchAdapter.notifyDataSetChanged()
         }
     }
 }

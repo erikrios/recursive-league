@@ -1,4 +1,4 @@
-package com.erikriosetiawan.recursiveleague.activities.ui.nextmatch
+package com.erikriosetiawan.recursiveleague.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.erikriosetiawan.recursiveleague.R
@@ -21,8 +20,6 @@ import com.google.gson.Gson
 
 class NextMatchFragment : Fragment(), NextMatchMainView {
 
-    private lateinit var nextMatchViewModel: NextMatchViewModel
-
     private var nextMatches: MutableList<NextMatch> = mutableListOf()
     private var idLeague: String? = null
     private lateinit var presenter: NextMatchMainPresenter
@@ -36,8 +33,6 @@ class NextMatchFragment : Fragment(), NextMatchMainView {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        nextMatchViewModel =
-            ViewModelProviders.of(this).get(NextMatchViewModel::class.java)
         root = inflater.inflate(R.layout.fragment_next_match, container, false)
         return root
     }

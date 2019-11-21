@@ -1,4 +1,4 @@
-package com.erikriosetiawan.recursiveleague.activities.ui.league
+package com.erikriosetiawan.recursiveleague.fragments
 
 import android.content.Context
 import android.os.Bundle
@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.erikriosetiawan.recursiveleague.R
 import com.erikriosetiawan.recursiveleague.activities.LeagueDetailsActivity
@@ -17,7 +16,6 @@ import org.jetbrains.anko.recyclerview.v7.recyclerView
 
 class LeagueFragment : Fragment(), AnkoComponent<Context> {
 
-    private lateinit var viewModel: LeagueViewModel
     private var leagues: MutableList<League> = mutableListOf()
 
     override fun onCreateView(
@@ -27,10 +25,8 @@ class LeagueFragment : Fragment(), AnkoComponent<Context> {
         return createView(AnkoContext.Companion.create(requireContext()))
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(LeagueViewModel::class.java)
-        // TODO: Use the ViewModel
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         initData()
     }
 

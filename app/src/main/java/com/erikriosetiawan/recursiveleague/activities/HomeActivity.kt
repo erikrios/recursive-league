@@ -5,13 +5,14 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import androidx.appcompat.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
+import androidx.appcompat.widget.SearchView
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import com.erikriosetiawan.recursiveleague.R
+import com.erikriosetiawan.recursiveleague.fragments.FavoritesFragment
+import com.erikriosetiawan.recursiveleague.fragments.LeagueFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class HomeActivity : AppCompatActivity() {
@@ -21,16 +22,10 @@ class HomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_home)
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
 
-        val navController = findNavController(R.id.nav_host_fragment)
-
-        val appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.navigation_league,
-                R.id.navigation_favorites
-            )
-        )
-        setupActionBarWithNavController(navController, appBarConfiguration)
-        navView.setupWithNavController(navController)
+        navView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
+        if (savedInstanceState == null) {
+            navView.selectedItemId = R.id.navigation_league
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -56,4 +51,29 @@ class HomeActivity : AppCompatActivity() {
         })
         return super.onCreateOptionsMenu(menu)
     }
+
+    private val onNavigationItemSelectedListener: BottomNavigationView.OnNavigationItemSelectedListener =
+        BottomNavigationView.OnNavigationItemSelectedListener {
+            val fragmentManager: FragmentManager
+            val fragmentTransaction: FragmentTransaction
+            val fragment: Fragment
+            when (it.itemId) {
+                R.id.navigation_league -> {
+                    fragment = LeagueFragment()
+                    fragmentManager = supportFragmentManager
+                    fragmentTransaction = fragmentManager.beginTransaction()
+                    fragmentTransaction.replace(R.id.frame_home, fragment)
+                    fragmentTransaction.commit()
+                    return@OnNavigationItemSelectedListener true
+                }
+                else -> {
+                    fragment = FavoritesFragment()
+                    fragmentManager = supportFragmentManager
+                    fragmentTransaction = fragmentManager.beginTransaction()
+                    fragmentTransaction.replace(R.id.frame_home, fragment)
+                    fragmentTransaction.commit()
+                    return@OnNavigationItemSelectedListener true
+                }
+            }
+        }
 }

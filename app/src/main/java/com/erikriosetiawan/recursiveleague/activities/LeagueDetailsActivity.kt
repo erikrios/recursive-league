@@ -3,11 +3,13 @@ package com.erikriosetiawan.recursiveleague.activities
 import android.os.Bundle
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import com.erikriosetiawan.recursiveleague.R
+import com.erikriosetiawan.recursiveleague.fragments.LastMatchFragment
+import com.erikriosetiawan.recursiveleague.fragments.LeagueDetailsFragment
+import com.erikriosetiawan.recursiveleague.fragments.NextMatchFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class LeagueDetailsActivity : AppCompatActivity() {
@@ -21,19 +23,10 @@ class LeagueDetailsActivity : AppCompatActivity() {
         setContentView(R.layout.activity_league_details)
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
 
-        val navController = findNavController(R.id.nav_host_fragment)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        val appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.navigation_league_details,
-                R.id.navigation_last_match,
-                R.id.navigation_next_match
-            )
-        )
-        setupActionBarWithNavController(navController, appBarConfiguration)
-        navView.setupWithNavController(navController)
-
+        navView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
+        if (savedInstanceState == null) {
+            navView.selectedItemId = R.id.navigation_league_details
+        }
         setActionBar()
     }
 
@@ -46,4 +39,37 @@ class LeagueDetailsActivity : AppCompatActivity() {
         onBackPressed()
         return true
     }
+
+    private val onNavigationItemSelectedListener: BottomNavigationView.OnNavigationItemSelectedListener =
+        BottomNavigationView.OnNavigationItemSelectedListener {
+            val fragmentManager: FragmentManager
+            val fragmentTransaction: FragmentTransaction
+            val fragment: Fragment
+            when (it.itemId) {
+                R.id.navigation_league_details -> {
+                    fragment = LeagueDetailsFragment()
+                    fragmentManager = supportFragmentManager
+                    fragmentTransaction = fragmentManager.beginTransaction()
+                    fragmentTransaction.replace(R.id.frame_league_details, fragment)
+                    fragmentTransaction.commit()
+                    return@OnNavigationItemSelectedListener true
+                }
+                R.id.navigation_last_match -> {
+                    fragment = LastMatchFragment()
+                    fragmentManager = supportFragmentManager
+                    fragmentTransaction = fragmentManager.beginTransaction()
+                    fragmentTransaction.replace(R.id.frame_league_details, fragment)
+                    fragmentTransaction.commit()
+                    return@OnNavigationItemSelectedListener true
+                }
+                else -> {
+                    fragment = NextMatchFragment()
+                    fragmentManager = supportFragmentManager
+                    fragmentTransaction = fragmentManager.beginTransaction()
+                    fragmentTransaction.replace(R.id.frame_league_details, fragment)
+                    fragmentTransaction.commit()
+                    return@OnNavigationItemSelectedListener true
+                }
+            }
+        }
 }
