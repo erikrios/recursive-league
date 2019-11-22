@@ -19,9 +19,6 @@ import com.erikriosetiawan.recursiveleague.presenters.StandingsMainPresenter
 import com.erikriosetiawan.recursiveleague.views.StandingsMainView
 import com.google.gson.Gson
 
-/**
- * A simple [Fragment] subclass.
- */
 class StandingsFragment : Fragment(), StandingsMainView {
 
     private lateinit var root: View
