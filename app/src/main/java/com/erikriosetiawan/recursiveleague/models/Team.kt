@@ -1,7 +1,10 @@
 package com.erikriosetiawan.recursiveleague.models
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class Team(
 
     @SerializedName("idTeam")
@@ -42,4 +45,4 @@ data class Team(
 
     @SerializedName("strTeamBadge")
     val teamBadge: String? = null
-)
+) : Parcelable
