@@ -1,6 +1,9 @@
 package com.erikriosetiawan.recursiveleague.activities
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
+import androidx.appcompat.widget.SearchView
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -26,6 +29,34 @@ class LeagueDetailsActivity : AppCompatActivity() {
             navView.selectedItemId = R.id.navigation_league_details
         }
         setActionBar()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.team_search_menu, menu)
+
+        val searchTeam: MenuItem? = menu?.findItem(R.id.item_team_search)
+        val searchView: SearchView = searchTeam?.actionView as SearchView
+        searchView.queryHint = getString(R.string.team_search_hint)
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                val bundle = Bundle()
+                bundle.putString(TeamsFragment.VALIDATE_KEY, TeamsFragment.QUERY_KEY)
+                bundle.putString(TeamsFragment.QUERY_KEY, query?.toLowerCase())
+                val fragment = TeamsFragment()
+                fragment.arguments = bundle
+                val fragmentManager = supportFragmentManager
+                val fragmentTransaction = fragmentManager.beginTransaction()
+                fragmentTransaction.replace(R.id.frame_league_details, fragment)
+                fragmentTransaction.commit()
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                return false
+            }
+
+        })
+        return super.onCreateOptionsMenu(menu)
     }
 
     private fun setActionBar() {

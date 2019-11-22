@@ -28,4 +28,7 @@ object TheSportDBApi {
 
     fun getPlayer(idTeam: String?): String =
         "${BuildConfig.BASE_URL}api/v1/json/${BuildConfig.TSDB_API_KEY}/lookup_all_players.php?id=$idTeam"
+
+    fun geTeamSearchResult(query: String?): String =
+        "${BuildConfig.BASE_URL}api/v1/json/${BuildConfig.TSDB_API_KEY}/searchteams.php?t=$query"
 }

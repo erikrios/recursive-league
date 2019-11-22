@@ -16,6 +16,7 @@ import com.erikriosetiawan.recursiveleague.apis.ApiRepository
 import com.erikriosetiawan.recursiveleague.models.League
 import com.erikriosetiawan.recursiveleague.models.Team
 import com.erikriosetiawan.recursiveleague.presenters.TeamMainPresenter
+import com.erikriosetiawan.recursiveleague.presenters.TeamSearchResultMainPresenter
 import com.erikriosetiawan.recursiveleague.views.TeamMainView
 import com.google.gson.Gson
 
@@ -28,9 +29,18 @@ class TeamsFragment : Fragment(), TeamMainView {
 
     private var idLeague: String? = null
     private var teams: MutableList<Team> = mutableListOf()
-    private lateinit var presenter: TeamMainPresenter
+    private lateinit var teamMainPresenter: TeamMainPresenter
+    private lateinit var teamSearchResultMainPresenter: TeamSearchResultMainPresenter
 
     private lateinit var progressBar: ProgressBar
+
+    companion object {
+        const val QUERY_KEY = "query_key"
+        const val VALIDATE_KEY = "validate_key"
+    }
+
+    private var validate: String? = null
+    private var query: String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,12 +53,18 @@ class TeamsFragment : Fragment(), TeamMainView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView(root)
-        getIntentIdLeague()
-
+        getQuery()
         val gson = Gson()
         val request = ApiRepository()
-        presenter = TeamMainPresenter(this, request, gson)
-        presenter.getTeamList(idLeague)
+
+        if (validate.equals(QUERY_KEY)) {
+            teamSearchResultMainPresenter = TeamSearchResultMainPresenter(this, request, gson)
+            teamSearchResultMainPresenter.getTeamSearchResultList(query)
+        } else {
+            getIntentIdLeague()
+            teamMainPresenter = TeamMainPresenter(this, request, gson)
+            teamMainPresenter.getTeamList(idLeague)
+        }
     }
 
     private fun setRecyclerGrid(root: View) {
@@ -60,6 +76,14 @@ class TeamsFragment : Fragment(), TeamMainView {
     private fun getIntentIdLeague() {
         val league: League? = activity?.intent?.getParcelableExtra(LeagueDetailsActivity.LEAGUE_KEY)
         idLeague = league?.idLeague
+    }
+
+    private fun getQuery() {
+        val bundle = this.arguments
+        if (bundle != null) {
+            validate = bundle.getString(VALIDATE_KEY)
+            query = bundle.getString(QUERY_KEY)
+        }
     }
 
     private fun initView(root: View) {

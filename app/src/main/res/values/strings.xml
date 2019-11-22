@@ -85,4 +85,6 @@
     <string name="draw">D</string>
     <string name="loss">L</string>
     <string name="point">Pt</string>
+    <string name="team_search">Team Search</string>
+    <string name="team_search_hint">Arsenal</string>
 </resources>
