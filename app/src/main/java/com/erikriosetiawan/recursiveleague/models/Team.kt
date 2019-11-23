@@ -6,6 +6,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class Team(
+    val id: Long?,
 
     @SerializedName("idTeam")
     val idTeam: String? = null,
@@ -13,36 +14,18 @@ data class Team(
     @SerializedName("strTeam")
     val strTeam: String? = null,
 
-    @SerializedName("intFormedYear")
-    val formedYear: String? = null,
-
-    @SerializedName("strSport")
-    val sport: String? = null,
-
-    @SerializedName("strLeague")
-    val league: String? = null,
-
-    @SerializedName("idLeague")
-    val idLeague: String? = null,
-
-    @SerializedName("strStadium")
-    val stadium: String? = null,
-
-    @SerializedName("strStadiumDescription")
-    val stadiumDescription: String? = null,
-
-    @SerializedName("strStadiumLocation")
-    val stadiumLocation: String? = null,
-
-    @SerializedName("intStadiumCapacity")
-    val stadiumCapacity: String? = null,
+    @SerializedName("strTeamBadge")
+    val teamBadge: String? = null,
 
     @SerializedName("strDescriptionEN")
-    val description: String? = null,
-
-    @SerializedName("strCountry")
-    val country: String? = null,
-
-    @SerializedName("strTeamBadge")
-    val teamBadge: String? = null
-) : Parcelable
+    val description: String? = null
+) : Parcelable {
+    companion object {
+        const val TABLE_FAVORITE_TEAM: String = "TABLE_FAVORITE_TEAM"
+        const val ID: String = "ID_"
+        const val ID_TEAM: String = "ID_TEAM"
+        const val TEAM_NAME: String = "TEAM_NAME"
+        const val TEAM_BADGE: String = "TEAM_BADGE"
+        const val DESCRIPTION: String = "DESCRIPTION"
+    }
+}

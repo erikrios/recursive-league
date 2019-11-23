@@ -15,9 +15,6 @@ import com.erikriosetiawan.recursiveleague.models.LastMatch
 import org.jetbrains.anko.db.classParser
 import org.jetbrains.anko.db.select
 
-/**
- * A simple [Fragment] subclass.
- */
 class FavoriteLastMatchFragment : Fragment() {
 
     private lateinit var rvFavoriteLastMatch: RecyclerView
